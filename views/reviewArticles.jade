@@ -1,0 +1,87 @@
+extends ../node_modules/jade-bootstrap/_bootstrap
+append styles
+	// Custom styles for this template 
+	link(href="../css/carousel.css", rel="stylesheet")
+block body
+	.navbar-wrapper
+		.container
+			nav.navbar.navbar-inverse.navbar-static-top
+				.container
+					.navbar-header
+						button(type="button" ,class="navbar-toggle collapsed", data-toggle="collapse", data-target="#navbar" ,aria-expanded="false", aria-controls="navbar")
+							span.sr-only Toggle navigation
+							span.icon-bar
+							span.icon-bar
+							span.icon-bar
+							
+						a(class="navbar-brand", href="/") Revista Tec 
+					#navbar.navbar-collapse.collapse.menus
+						ul.nav.navbar-nav
+							li.active
+								a(href="/") Inicio
+							li
+								a(href="/sendArticle") Agregar un articulo
+							li
+								a(href="#contact") Contacto
+							li.dropdown
+								a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-expanded='false')
+									| Más 
+									span.caret
+								ul.dropdown-menu(role='menu')
+									li
+										a(href='#') Action
+									li
+										a(href='#') Another action
+									li
+										a(href='#') Something else here
+									li.divider
+									li.dropdown-header Nav header
+									li
+										a(href='#') Separated link
+									li
+										a(href='#') One more separated link
+							li
+								form( action="/" method="post" class="navbar-form navbar-right" role="search")
+									.form-group
+										input( type="text" class="form-control" placeholder="Search" name="search")
+									button( type="submit" class="btn btn-default") Buscar
+							-if ( logued== true )
+								li
+									a( class="navbar-brand text-xs-right", href="#") Bienvenido,#{userName}
+								li
+									form(method= "post" action="/logout")
+										p
+											button(type="submit" class="btn btn-primary")
+												span( class="glyphicon glyphicon-log-out logout")
+							-else
+								li
+									a( class="navbar-brand text-xs-right", href="/login" ) Iniciar Sesión	
+	.container.marketing
+		.clearfix
+		.row
+			each art in articles 
+					.col-lg-4
+						img.img-circle(src='../images/#{art.photo}', alt='', width='140', height='140')
+						h2   #{art.title}
+						p   #{art.content}
+						a.btn.btn-default(href='viewArticle/#{art._id}', role='button') Ver artículo
+						form(method="post" action="#")
+							input(type="hidden" name="articleId" value="#{art._id}")
+							input(class="btn btn-default" type='submit' value="Publicar articulo")
+			if (articles.length<1)
+				h2 Lo sentimos, no hay nuevos articulos. Intenta de nuevo.	
+		
+		// FOOTER
+		footer
+			p.pull-right
+				a(href='#') Back to top
+			p
+				| © 2014 Company, Inc. · 
+				a(href='#') Privacy
+				|  · 
+				a(href='#') Terms
+
+
+
+
+h1 Copyright

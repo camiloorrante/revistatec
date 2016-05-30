@@ -1,0 +1,23 @@
+{
+  "name": "revista",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.12.0",
+    "cookie-parser": "~1.3.4",
+    "debug": "~2.1.1",
+    "express": "~4.12.2",
+    "jade": "~1.9.2",
+    "morgan": "~1.5.1",
+    "serve-favicon": "~2.2.0",
+    "jade-bootstrap": "*"
+  },
+  "description": "[JADE-Bootstrap](http://rajasegar.github.io/JADE-Bootstrap/) boilerplate project for [NodeJS](http://nodejs.org/) using [Express](http://expressjs.com) middleware",
+  "main": "\u0016\u0016node ./bin/www",
+  "devDependencies": {},
+  "author": "camilo orrante",
+  "license": "ISC"
+}
